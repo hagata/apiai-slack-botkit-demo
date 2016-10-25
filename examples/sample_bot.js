@@ -1,5 +1,6 @@
 'use strict';
 
+const config = require('../__config');
 const Botkit = require('botkit');
 const apiaibotkit = require('../api-ai-botkit');
 
@@ -19,12 +20,17 @@ controller.on('reaction_added', function (bot, message) {
 
 apiai.all(function (message, resp, bot) {
     console.log(resp.result.action);
+    console.log(`[USER] -> "${resp.result.resolvedQuery}"`);
 });
 
 apiai
     .action('smalltalk.greetings', function (message, resp, bot) {
         var responseText = resp.result.fulfillment.speech;
         bot.reply(message, responseText);
+    })
+    .action('echo.idea', (message, resp, bot) => {
+        let responseText = resp.result.fulfillment.speech;
+        bot.reply(message, responseText)
     })
     .action('input.unknown', function (message, resp, bot) {
         bot.reply(message, "Sorry, I don't understand");

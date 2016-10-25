@@ -1,0 +1,1 @@
+worker: node examples/sample_bot.js
