@@ -1,6 +1,5 @@
 'use strict';
 
-const config = require('../__config');
 const Botkit = require('botkit');
 const apiaibotkit = require('../api-ai-botkit');
 
